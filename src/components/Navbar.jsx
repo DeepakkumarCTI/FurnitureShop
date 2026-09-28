@@ -433,20 +433,7 @@ export default function Navbar() {
                             Collection
                         </Link>
 
-                        <Link
-                            to="/#collections"
-                            className="
-                                whitespace-nowrap
-                                text-xs
-                                font-medium
-                                text-[#F7F1E8]
-                                transition-colors
-                                duration-300
-                                hover:text-[#D6B77A]
-                            "
-                        >
-                            Rooms
-                        </Link>
+                        
 
                         <Link
                             to="/contact"

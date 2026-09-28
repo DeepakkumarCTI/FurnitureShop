@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { categories, money } from "../data";
 import { useStore } from "../context/StoreContext";
 
@@ -242,7 +243,11 @@ export default function Admin() {
     }
 
     function deleteProduct(productId) {
-        if (!window.confirm("Are you sure you want to delete this product?")) {
+        if (
+            !window.confirm(
+                "Are you sure you want to delete this product?"
+            )
+        ) {
             return;
         }
 
@@ -267,12 +272,20 @@ export default function Admin() {
         flash?.("Order status updated");
     }
 
+    /* =========================
+       ADMIN LOGIN PAGE
+    ========================= */
+
     if (!logged) {
         return (
             <main className="admin-login-page min-h-screen bg-gradient-to-br from-[#f7f5ef] via-white to-[#e4f2ed] px-4 py-12 sm:px-6">
                 <div className="mx-auto grid max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-slate-900/10 lg:grid-cols-2">
+
+                    {/* LEFT SIDE */}
                     <section className="relative flex min-h-[300px] flex-col justify-between overflow-hidden bg-gradient-to-br from-slate-950 via-emerald-950 to-teal-800 p-8 text-white sm:p-10 lg:min-h-[620px]">
+
                         <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full border-[35px] border-white/10" />
+
                         <div className="absolute -bottom-20 -left-16 h-72 w-72 rounded-full bg-emerald-400/10 blur-2xl" />
 
                         <div className="relative">
@@ -288,8 +301,8 @@ export default function Admin() {
                             </h1>
 
                             <p className="mt-5 max-w-sm leading-7 text-white/75">
-                                Manage furniture, track customer orders, and review
-                                enquiries from one organized dashboard.
+                                Manage furniture, track customer orders, and
+                                review enquiries from one organized dashboard.
                             </p>
                         </div>
 
@@ -310,8 +323,10 @@ export default function Admin() {
                         </div>
                     </section>
 
+                    {/* RIGHT SIDE */}
                     <section className="flex items-center p-6 sm:p-10 lg:p-12">
                         <div className="w-full">
+
                             <span className="inline-flex rounded-full bg-emerald-100 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-emerald-800">
                                 Staff access
                             </span>
@@ -328,6 +343,7 @@ export default function Admin() {
                                 className="mt-7 space-y-5"
                                 onSubmit={handleLogin}
                             >
+                                {/* EMAIL */}
                                 <label className="block">
                                     <span className="mb-2 block text-sm font-semibold text-slate-700">
                                         Email address
@@ -336,7 +352,9 @@ export default function Admin() {
                                     <input
                                         type="email"
                                         value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
                                         required
                                         autoComplete="username"
                                         placeholder="admin@forma.com"
@@ -344,6 +362,7 @@ export default function Admin() {
                                     />
                                 </label>
 
+                                {/* PASSWORD */}
                                 <label className="block">
                                     <span className="mb-2 block text-sm font-semibold text-slate-700">
                                         Password
@@ -352,7 +371,9 @@ export default function Admin() {
                                     <input
                                         type="password"
                                         value={pass}
-                                        onChange={(e) => setPass(e.target.value)}
+                                        onChange={(e) =>
+                                            setPass(e.target.value)
+                                        }
                                         required
                                         autoComplete="current-password"
                                         placeholder="Enter your password"
@@ -360,19 +381,41 @@ export default function Admin() {
                                     />
                                 </label>
 
+                                {/* LOGIN BUTTON */}
                                 <button
                                     type="submit"
                                     className="w-full rounded-full bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 px-6 py-4 font-bold text-white shadow-lg shadow-emerald-700/20 transition hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     Sign In to Dashboard
-                                    <span className="ml-2" aria-hidden="true">
+
+                                    <span
+                                        className="ml-2"
+                                        aria-hidden="true"
+                                    >
                                         →
                                     </span>
                                 </button>
                             </form>
 
+                            {/* BACK TO WEBSITE BUTTON */}
+                            <div className="mt-4">
+                                <Link
+                                    to="/"
+                                    className="flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-700 transition hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700"
+                                >
+                                    <span
+                                        className="mr-2"
+                                        aria-hidden="true"
+                                    >
+                                        ←
+                                    </span>
+
+                                    Back to Website
+                                </Link>
+                            </div>
+
                             <p className="mt-5 text-center text-xs leading-5 text-slate-400">
-                                 Login for this local project. It is not
+                                Login for this local project. It is not
                                 server-side authentication.
                             </p>
                         </div>
@@ -384,10 +427,15 @@ export default function Admin() {
         );
     }
 
+    /* =========================
+       ADMIN DASHBOARD
+    ========================= */
+
     return (
         <main className="min-h-screen w-full bg-gradient-to-br from-[#f7f5ef] via-white to-[#eaf3ef] px-3 py-6 sm:px-4 lg:px-5">
             <div className="w-full">
-                {/* Dashboard header */}
+
+                {/* DASHBOARD HEADER */}
                 <header className="mb-9 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-emerald-800">
@@ -400,25 +448,42 @@ export default function Admin() {
                         </h1>
 
                         <p className="mt-3 max-w-xl leading-6 text-slate-600">
-                            Manage your furniture collection, monitor orders, and
-                            keep track of customer enquiries.
+                            Manage your furniture collection, monitor orders,
+                            and keep track of customer enquiries.
                         </p>
                     </div>
 
-                    <button
-                        type="button"
-                        onClick={() => setLogged(false)}
-                        className="inline-flex w-fit items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-700 transition hover:border-rose-400 hover:bg-rose-50 hover:text-rose-700"
-                    >
-                        Log Out
-                        <span className="ml-2" aria-hidden="true">
-                            ↗
-                        </span>
-                    </button>
+                    <div className="flex flex-wrap gap-3">
+
+                        {/* BACK TO WEBSITE */}
+                        <Link
+                            to="/"
+                            className="inline-flex w-fit items-center justify-center rounded-full border border-emerald-300 bg-white px-5 py-3 font-semibold text-emerald-700 transition hover:border-emerald-600 hover:bg-emerald-50"
+                        >
+                            ← Website
+                        </Link>
+
+                        {/* LOGOUT */}
+                        <button
+                            type="button"
+                            onClick={() => setLogged(false)}
+                            className="inline-flex w-fit items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-700 transition hover:border-rose-400 hover:bg-rose-50 hover:text-rose-700"
+                        >
+                            Log Out
+
+                            <span
+                                className="ml-2"
+                                aria-hidden="true"
+                            >
+                                ↗
+                            </span>
+                        </button>
+                    </div>
                 </header>
 
-                {/* Dashboard stats */}
+                {/* DASHBOARD STATS */}
                 <section className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
                     <StatCard
                         label="Total Products"
                         value={products.length}
@@ -452,12 +517,14 @@ export default function Admin() {
                     />
                 </section>
 
-                {/* Main management sections */}
+                {/* MAIN MANAGEMENT SECTIONS */}
                 <div className="grid grid-cols-1 items-start gap-7 xl:grid-cols-2">
-                    {/* Products */}
+
+                    {/* PRODUCTS */}
                     <section className="min-w-0">
                         <AnimatedBorder>
                             <div className="rounded-[1.4rem] bg-white p-5 sm:p-7">
+
                                 <SectionHeading
                                     eyebrow="Inventory"
                                     title="Manage Products"
@@ -469,6 +536,8 @@ export default function Admin() {
                                     className="space-y-4"
                                     onSubmit={handleProductSubmit}
                                 >
+
+                                    {/* PRODUCT NAME */}
                                     <label className="block">
                                         <span className="mb-2 block text-sm font-semibold text-slate-700">
                                             Product name
@@ -482,7 +551,9 @@ export default function Admin() {
                                         />
                                     </label>
 
+                                    {/* CATEGORY + PRICE */}
                                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+
                                         <label className="block">
                                             <span className="mb-2 block text-sm font-semibold text-slate-700">
                                                 Category
@@ -494,14 +565,16 @@ export default function Admin() {
                                                 required
                                                 defaultValue={categories[1]}
                                             >
-                                                {categories.slice(1).map((category) => (
-                                                    <option
-                                                        key={category}
-                                                        value={category}
-                                                    >
-                                                        {category}
-                                                    </option>
-                                                ))}
+                                                {categories
+                                                    .slice(1)
+                                                    .map((category) => (
+                                                        <option
+                                                            key={category}
+                                                            value={category}
+                                                        >
+                                                            {category}
+                                                        </option>
+                                                    ))}
                                             </select>
                                         </label>
 
@@ -521,6 +594,7 @@ export default function Admin() {
                                         </label>
                                     </div>
 
+                                    {/* IMAGE */}
                                     <label className="block">
                                         <span className="mb-2 block text-sm font-semibold text-slate-700">
                                             Product image URL
@@ -534,6 +608,7 @@ export default function Admin() {
                                         />
                                     </label>
 
+                                    {/* DESCRIPTION */}
                                     <label className="block">
                                         <span className="mb-2 block text-sm font-semibold text-slate-700">
                                             Description
@@ -547,7 +622,9 @@ export default function Admin() {
                                         />
                                     </label>
 
+                                    {/* FORM BUTTONS */}
                                     <div className="flex flex-wrap gap-3">
+
                                         <button
                                             type="submit"
                                             className="rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-3.5 font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
@@ -570,16 +647,18 @@ export default function Admin() {
 
                                     {editingProductId !== null && (
                                         <p className="rounded-xl bg-amber-50 px-4 py-3 text-sm font-medium text-amber-800">
-                                            You are editing an existing product.
-                                            Save your changes or cancel editing.
+                                            You are editing an existing
+                                            product. Save your changes or
+                                            cancel editing.
                                         </p>
                                     )}
                                 </form>
 
                                 <div className="my-7 border-t border-slate-200" />
 
-                                {/* Product search and category filter */}
+                                {/* SEARCH + FILTER */}
                                 <div className="mb-4 flex flex-col gap-3 sm:flex-row">
+
                                     <input
                                         value={search}
                                         onChange={(e) => {
@@ -598,17 +677,24 @@ export default function Admin() {
                                         }}
                                         className="admin-input sm:max-w-44"
                                     >
-                                        <option value="All">All Categories</option>
+                                        <option value="All">
+                                            All Categories
+                                        </option>
 
-                                        {categories.slice(1).map((category) => (
-                                            <option key={category} value={category}>
-                                                {category}
-                                            </option>
-                                        ))}
+                                        {categories
+                                            .slice(1)
+                                            .map((category) => (
+                                                <option
+                                                    key={category}
+                                                    value={category}
+                                                >
+                                                    {category}
+                                                </option>
+                                            ))}
                                     </select>
                                 </div>
 
-                                {/* Product list heading */}
+                                {/* PRODUCT LIST HEADING */}
                                 <div className="mb-4 flex items-center justify-between">
                                     <h3 className="font-bold text-slate-900">
                                         Product List
@@ -619,7 +705,7 @@ export default function Admin() {
                                     </span>
                                 </div>
 
-                                {/* Product cards */}
+                                {/* PRODUCT LIST */}
                                 <div className="space-y-3">
                                     {displayedProducts.length ? (
                                         displayedProducts.map((product) => (
@@ -631,7 +717,9 @@ export default function Admin() {
                                                     <img
                                                         src={
                                                             product.image ||
-                                                            pics[product.category] ||
+                                                            pics[
+                                                            product.category
+                                                            ] ||
                                                             pics.Living
                                                         }
                                                         alt={product.name}
@@ -645,7 +733,8 @@ export default function Admin() {
                                                     </p>
 
                                                     <p className="mt-1 text-xs text-slate-500">
-                                                        {product.category || "Furniture"}
+                                                        {product.category ||
+                                                            "Furniture"}
                                                     </p>
 
                                                     <p className="mt-1 font-bold text-emerald-700">
@@ -654,10 +743,13 @@ export default function Admin() {
                                                 </div>
 
                                                 <div className="flex shrink-0 gap-2">
+
                                                     <button
                                                         type="button"
                                                         onClick={() =>
-                                                            startEditingProduct(product)
+                                                            startEditingProduct(
+                                                                product
+                                                            )
                                                         }
                                                         className="rounded-full border border-emerald-200 bg-white px-4 py-2 text-xs font-bold text-emerald-700 transition hover:bg-emerald-600 hover:text-white"
                                                     >
@@ -667,12 +759,15 @@ export default function Admin() {
                                                     <button
                                                         type="button"
                                                         onClick={() =>
-                                                            deleteProduct(product.id)
+                                                            deleteProduct(
+                                                                product.id
+                                                            )
                                                         }
                                                         className="rounded-full border border-rose-200 bg-white px-4 py-2 text-xs font-bold text-rose-600 transition hover:bg-rose-600 hover:text-white"
                                                     >
                                                         Delete
                                                     </button>
+
                                                 </div>
                                             </div>
                                         ))
@@ -683,28 +778,34 @@ export default function Admin() {
                                     )}
                                 </div>
 
-                                {/* View More / Show Less */}
+                                {/* VIEW MORE */}
                                 {filteredProducts.length > 4 && (
                                     <button
                                         type="button"
                                         onClick={() =>
-                                            setShowAllProducts((previous) => !previous)
+                                            setShowAllProducts(
+                                                (previous) => !previous
+                                            )
                                         }
                                         className="mt-5 w-full rounded-full border border-emerald-200 bg-emerald-50 px-5 py-3 font-bold text-emerald-700 transition hover:border-emerald-600 hover:bg-emerald-600 hover:text-white"
                                     >
                                         {showAllProducts
                                             ? "Show Less"
-                                            : `View More (${filteredProducts.length - 4} more)`}
+                                            : `View More (${filteredProducts.length - 4
+                                            } more)`}
                                     </button>
                                 )}
                             </div>
                         </AnimatedBorder>
                     </section>
 
-                    {/* Orders and enquiries */}
+                    {/* ORDERS + ENQUIRIES */}
                     <section className="min-w-0 space-y-7">
+
+                        {/* ORDERS */}
                         <AnimatedBorder>
                             <div className="rounded-[1.4rem] bg-white p-5 sm:p-7">
+
                                 <SectionHeading
                                     eyebrow="Sales"
                                     title="Customer Orders"
@@ -719,11 +820,25 @@ export default function Admin() {
                                         }
                                         className="admin-input"
                                     >
-                                        <option value="All">All Orders</option>
-                                        <option value="Received">Received</option>
-                                        <option value="Processing">Processing</option>
-                                        <option value="Completed">Completed</option>
-                                        <option value="Cancelled">Cancelled</option>
+                                        <option value="All">
+                                            All Orders
+                                        </option>
+
+                                        <option value="Received">
+                                            Received
+                                        </option>
+
+                                        <option value="Processing">
+                                            Processing
+                                        </option>
+
+                                        <option value="Completed">
+                                            Completed
+                                        </option>
+
+                                        <option value="Cancelled">
+                                            Cancelled
+                                        </option>
                                     </select>
                                 </div>
 
@@ -735,6 +850,7 @@ export default function Admin() {
                                                 className="rounded-2xl border border-slate-200 bg-slate-50 p-4"
                                             >
                                                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+
                                                     <div className="min-w-0">
                                                         <p className="break-all text-sm font-black text-slate-900">
                                                             {order.id}
@@ -763,11 +879,18 @@ export default function Admin() {
 
                                                     <div className="sm:text-right">
                                                         <p className="text-lg font-black text-emerald-700">
-                                                            {money(Number(order.total || 0))}
+                                                            {money(
+                                                                Number(
+                                                                    order.total ||
+                                                                    0
+                                                                )
+                                                            )}
                                                         </p>
 
                                                         <span className="mt-2 inline-flex rounded-full bg-white px-3 py-1 text-xs font-bold text-slate-600">
-                                                            {order.items?.length || 0} items
+                                                            {order.items
+                                                                ?.length || 0}{" "}
+                                                            items
                                                         </span>
                                                     </div>
                                                 </div>
@@ -787,7 +910,10 @@ export default function Admin() {
                                                     </label>
 
                                                     <select
-                                                        value={order.status || "Received"}
+                                                        value={
+                                                            order.status ||
+                                                            "Received"
+                                                        }
                                                         onChange={(e) =>
                                                             updateOrderStatus(
                                                                 order.id,
@@ -796,10 +922,21 @@ export default function Admin() {
                                                         }
                                                         className="admin-input"
                                                     >
-                                                        <option>Received</option>
-                                                        <option>Processing</option>
-                                                        <option>Completed</option>
-                                                        <option>Cancelled</option>
+                                                        <option>
+                                                            Received
+                                                        </option>
+
+                                                        <option>
+                                                            Processing
+                                                        </option>
+
+                                                        <option>
+                                                            Completed
+                                                        </option>
+
+                                                        <option>
+                                                            Cancelled
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </article>
@@ -813,9 +950,10 @@ export default function Admin() {
                             </div>
                         </AnimatedBorder>
 
-                        {/* Enquiries */}
+                        {/* ENQUIRIES */}
                         <AnimatedBorder>
                             <div className="rounded-[1.4rem] bg-white p-5 sm:p-7">
+
                                 <SectionHeading
                                     eyebrow="Customer messages"
                                     title="Enquiries"
@@ -830,6 +968,7 @@ export default function Admin() {
                                                 className="rounded-2xl border border-slate-200 bg-slate-50 p-4"
                                             >
                                                 <div className="flex items-start justify-between gap-3">
+
                                                     <div className="min-w-0">
                                                         <p className="break-words font-bold text-slate-900">
                                                             {enquiry.name}
@@ -931,7 +1070,9 @@ function AdminStyles() {
                 padding: 0.85rem 1rem;
                 color: #0f172a;
                 outline: none;
-                transition: border-color 200ms ease, box-shadow 200ms ease,
+                transition:
+                    border-color 200ms ease,
+                    box-shadow 200ms ease,
                     background 200ms ease;
             }
 
