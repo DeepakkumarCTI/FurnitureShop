@@ -83,19 +83,87 @@ export default function Collection() {
         </div>
       </section>
 
-      <section id="catalogue-products" className="mx-auto max-w-[1500px] scroll-mt-20 px-5 pb-20 sm:px-8 lg:px-12">
+      <section
+        id="catalogue-products"
+        className="mx-auto max-w-[1500px] scroll-mt-20 px-5 pb-20 sm:px-8 lg:px-12"
+      >
         <div className="rounded-[28px] border border-[#24352F]/10 bg-white/50 p-5 sm:p-7">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div><p className="text-xs font-bold uppercase tracking-[.25em] text-[#C47A45]">The full edit</p><h2 className="mt-2 text-3xl font-semibold">Explore all pieces</h2><p className="mt-2 text-sm text-[#24352F]/55">{shown.length} product{shown.length === 1 ? "" : "s"} matching your selection.</p></div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[.25em] text-[#C47A45]">
+                The full edit
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold">Explore all pieces</h2>
+              <p className="mt-2 text-sm text-[#24352F]/55">
+                {shown.length} product{shown.length === 1 ? "" : "s"} matching your
+                selection.
+              </p>
+            </div>
+
             <div className="flex flex-col gap-3 sm:flex-row">
-              <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search furniture..." className="w-full rounded-full border border-[#24352F]/15 bg-[#F7F1E8] px-5 py-3 text-sm outline-none focus:border-[#C47A45] sm:w-64" />
-              <select value={sort} onChange={e => setSort(e.target.value)} className="rounded-full border border-[#24352F]/15 bg-[#F7F1E8] px-5 py-3 text-sm outline-none"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select>
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search furniture..."
+                className="w-full rounded-full border border-[#24352F]/15 bg-[#F7F1E8] px-5 py-3 text-sm outline-none focus:border-[#C47A45] sm:w-64"
+              />
+
+              <select
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+                className="rounded-full border border-[#24352F]/15 bg-[#F7F1E8] px-5 py-3 text-sm outline-none"
+              >
+                <option value="featured">Featured</option>
+                <option value="low">Price: low to high</option>
+                <option value="high">Price: high to low</option>
+              </select>
             </div>
           </div>
+
           <div className="mt-6 flex gap-2 overflow-x-auto pb-2">
-            {filterCategories.map(item => <button key={item} type="button" onClick={() => selectCategory(item)} className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition ${category === item ? "bg-[#24352F] text-white" : "border border-[#24352F]/15 bg-[#F7F1E8] text-[#24352F] hover:bg-white"}`}>{item}</button>)}
+            {filterCategories.map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => selectCategory(item)}
+                className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition ${category === item
+                    ? "bg-[#24352F] text-white"
+                    : "border border-[#24352F]/15 bg-[#F7F1E8] text-[#24352F] hover:bg-white"
+                  }`}
+              >
+                {item}
+              </button>
+            ))}
           </div>
-          {shown.length ? <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{shown.map(product => <ProductCard key={product.id ?? product._id} product={product} />)}</div> : <div className="rounded-2xl bg-[#F7F1E8] px-6 py-16 text-center"><h3 className="text-xl font-semibold">No products found</h3><p className="mt-2 text-sm text-[#24352F]/55">Try another search or category.</p><button onClick={() => { setCategory("All"); setSearch(""); setSort("featured"); setParams({}); }} className="mt-5 rounded-full bg-[#24352F] px-5 py-3 text-sm font-semibold text-white">Reset filters</button></div>}
+
+          {shown.length ? (
+            <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+              {shown.map((product) => (
+                <ProductCard
+                  key={product.id ?? product._id}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl bg-[#F7F1E8] px-6 py-16 text-center">
+              <h3 className="text-xl font-semibold">No products found</h3>
+              <p className="mt-2 text-sm text-[#24352F]/55">
+                Try another search or category.
+              </p>
+              <button
+                onClick={() => {
+                  setCategory("All");
+                  setSearch("");
+                  setSort("featured");
+                  setParams({});
+                }}
+                className="mt-5 rounded-full bg-[#24352F] px-5 py-3 text-sm font-semibold text-white"
+              >
+                Reset filters
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </main>
