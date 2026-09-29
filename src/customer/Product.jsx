@@ -407,7 +407,7 @@ export default function Product() {
             </div>
 
             {/* Reassurance */}
-            <div className="mt-9 grid max-w-xl grid-cols-1 gap-3 border-t border-[#24352F]/10 pt-6 sm:grid-cols-3">
+            <div className="mt-9 grid max-w-xl grid-cols-2 gap-3 border-t border-[#24352F]/10 pt-6 sm:grid-cols-3">
 
               <div>
                 <p className="text-xs font-semibold tracking-[0.12em] text-[#24352F]">

@@ -31,8 +31,8 @@ export default function Home() {
         <main className="w-full overflow-hidden bg-[#EFE5D8] text-[#24352F]">
 
             {/* Hero Section */}
-            
-            
+
+
             <section
                 className="
         relative
@@ -996,10 +996,10 @@ export default function Home() {
     `}</style>
 
             </section>
-            
 
 
-            
+
+
             {/* COLLECTIONS */}
             <section
                 className="
@@ -1982,13 +1982,13 @@ export default function Home() {
     `}</style>
 
             </section>
-            
+
             {/* COLOUR STORY */}
-            
-            
-        
+
+
+
             {/* HANDPICKED */}
-            
+
             <section
                 className="
         relative
@@ -2345,7 +2345,7 @@ export default function Home() {
                         <div
                             className="
                     grid
-                    grid-cols-1
+                    grid-cols-2
                     gap-6
                     sm:grid-cols-2
                     lg:grid-cols-4
@@ -2357,29 +2357,29 @@ export default function Home() {
                                 .slice(0, 4)
                                 .map((product, index) => (
 
-                                <div
-                                    key={product.id}
-                                    className={`
+                                    <div
+                                        key={product.id}
+                                        className={`
                             group
                             relative
                             animate-handpicked-card
                             ${index === 0
-                                            ? "handpicked-card-1"
-                                            : index === 1
-                                                ? "handpicked-card-2"
-                                                : index === 2
-                                                    ? "handpicked-card-3"
-                                                    : "handpicked-card-4"
-                                        }
+                                                ? "handpicked-card-1"
+                                                : index === 1
+                                                    ? "handpicked-card-2"
+                                                    : index === 2
+                                                        ? "handpicked-card-3"
+                                                        : "handpicked-card-4"
+                                            }
                         `}
-                                >
+                                    >
 
-                                    {/* ============================= */}
-                                    {/* RAINBOW CARD BORDER */}
-                                    {/* ============================= */}
+                                        {/* ============================= */}
+                                        {/* RAINBOW CARD BORDER */}
+                                        {/* ============================= */}
 
-                                    <div
-                                        className="
+                                        <div
+                                            className="
                                 pointer-events-none
                                 absolute
                                 -inset-[2px]
@@ -2393,11 +2393,11 @@ export default function Home() {
                                 group-hover:opacity-100
                                 animate-handpicked-rainbow-border
                             "
-                                    />
+                                        />
 
-                                    {/* Rainbow glow */}
-                                    <div
-                                        className="
+                                        {/* Rainbow glow */}
+                                        <div
+                                            className="
                                 pointer-events-none
                                 absolute
                                 -inset-3
@@ -2411,24 +2411,24 @@ export default function Home() {
                                 group-hover:opacity-20
                                 animate-handpicked-rainbow-border
                             "
-                                    />
+                                        />
 
-                                    {/* Product card */}
-                                    <div
-                                        className="
+                                        {/* Product card */}
+                                        <div
+                                            className="
                                 relative
                                 z-10
                                 transition-all
                                 duration-500
                                 group-hover:-translate-y-2
                             "
-                                    >
-                                        <ProductCard product={product} />
+                                        >
+                                            <ProductCard product={product} />
+                                        </div>
+
                                     </div>
 
-                                </div>
-
-                            ))}
+                                ))}
 
                         </div>
 
@@ -2793,15 +2793,15 @@ export default function Home() {
     `}</style>
 
             </section>
-            
 
-           
 
-        
+
+
+
             {/* PROMO */}
-            
+
             {/* DESIGN NOTES */}
-            
+
             <section
                 className="
         relative
@@ -3575,7 +3575,7 @@ export default function Home() {
 
     `}</style>
             </section>
-            
+
 
 
 
