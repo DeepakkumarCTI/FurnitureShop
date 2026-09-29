@@ -77,7 +77,7 @@ export default function Checkout() {
 
                                 <p className="mx-auto mt-4 max-w-lg leading-7 text-slate-600">
                                     Your furniture order has been saved successfully. This is a
-                                    demo checkout, so no payment has been collected.
+                                     checkout, so no payment has been collected.
                                 </p>
 
                                 <div className="mx-auto mt-8 max-w-md rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 p-5 text-left">
@@ -137,7 +137,7 @@ export default function Checkout() {
 
                             <p className="mt-3 max-w-2xl leading-7 text-slate-600">
                                 Add your delivery details and review your furniture order
-                                before placing your demo order.
+                                before placing your  order.
                             </p>
                         </section>
 
@@ -296,11 +296,11 @@ export default function Checkout() {
 
                                                         <div>
                                                             <p className="font-bold text-amber-900">
-                                                                Demo checkout
+                                                                 checkout
                                                             </p>
                                                             <p className="mt-1 text-sm leading-6 text-amber-800">
                                                                 This project does not collect payments. Your
-                                                                order will be saved as a demo order.
+                                                                order will be saved as a  order.
                                                             </p>
                                                         </div>
                                                     </div>
@@ -311,7 +311,7 @@ export default function Checkout() {
                                                     disabled={placingOrder}
                                                     className="flex w-full items-center justify-center rounded-full bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 px-6 py-4 font-bold text-white shadow-lg shadow-emerald-700/20 transition hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
                                                 >
-                                                    {placingOrder ? "Placing Order..." : "Place Demo Order"}
+                                                    {placingOrder ? "Placing Order..." : "Place Order"}
                                                     <span className="ml-2" aria-hidden="true">
                                                         →
                                                     </span>
@@ -409,7 +409,7 @@ export default function Checkout() {
                                                 <div className="flex justify-between gap-3 text-slate-600">
                                                     <span>Payment</span>
                                                     <span className="font-semibold text-slate-900">
-                                                        Demo only
+                                                         only
                                                     </span>
                                                 </div>
                                             </div>
@@ -454,7 +454,7 @@ export default function Checkout() {
                                                         strokeLinejoin="round"
                                                     />
                                                 </svg>
-                                                Secure demo order
+                                                Secure  order
                                             </div>
                                         </div>
                                     </AnimatedBorder>

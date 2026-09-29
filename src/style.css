@@ -10,3 +10,61 @@
 @media(max-width:620px){.header{height:auto;min-height:68px;flex-wrap:wrap;padding:14px 5%;gap:12px}.brand{font-size:15px}.header nav{order:3;width:100%;justify-content:space-between;border-top:1px solid #52655e;padding-top:12px}.header nav a,.head-actions{font-size:10px}.head-actions{margin-left:auto;gap:10px}.admin-link{padding:6px!important}.hero{display:flex;flex-direction:column;padding:25px 5%;gap:25px}.hero h1{font-size:48px}.hero-note{margin-top:35px}.hero-image{min-height:300px;height:330px}.section-title{align-items:start;gap:15px}.section-title h2{font-size:27px}.category-grid{gap:10px}.category-card{height:210px}.category-card>div{left:12px;bottom:12px}.category-card h3{font-size:20px}.feature-band{grid-template-columns:1fr}.feature-copy h2{font-size:39px}.colour-blocks{min-height:300px}.product-grid{gap:12px}.product-photo{height:200px}.quick{opacity:1;transform:none;padding:9px}.product-name{font-size:12px}.promo{grid-template-columns:1fr}.promo>img{height:260px}.promo>div{padding:35px 7%}.promo h2{font-size:38px}.site-footer .footer-main{padding-top:35px;padding-bottom:35px}.page-heading{display:block}.search{width:100%;margin-top:20px}.filters{overflow:auto}.filters button{white-space:nowrap}.collection-hero{display:block}.collection-count{margin-top:25px}.catalogue-tools{display:grid;grid-template-columns:1fr}.catalogue-meta{gap:15px;align-items:flex-start}.detail,.contact{grid-template-columns:1fr;padding:35px 5%;gap:25px}.detail>img{max-height:400px}.detail h1{font-size:36px}.cart-layout{grid-template-columns:1fr;gap:20px}.cart-row{gap:10px}.cart-row img{width:75px;height:80px}.cart-row>b{font-size:12px}.stats{grid-template-columns:repeat(2,1fr)}.admin-columns{grid-template-columns:1fr}.section{padding-block:45px}.newsletter h2{font-size:28px}}
 
 @media(prefers-reduced-motion:reduce){.site-footer::before{animation:none;left:0;width:100%;opacity:.7}}
+/* ================= ANIMATED BORDER ================= */
+
+@keyframes formaBorderFlow {
+   0% {
+      background-position: 0% 50%;
+   }
+
+   50% {
+      background-position: 100% 50%;
+   }
+
+   100% {
+      background-position: 0% 50%;
+   }
+}
+
+.forma-animated-border {
+   position: relative;
+   isolation: isolate;
+   border: 1px solid transparent;
+   background-clip: padding-box;
+}
+
+.forma-animated-border::before {
+   content: "";
+   position: absolute;
+   inset: -1px;
+   padding: 1.5px;
+   border-radius: inherit;
+
+   background: linear-gradient(120deg,
+         #D6B77A,
+         #C47A45,
+         #F7F1E8,
+         #24352F,
+         #D6B77A);
+
+   background-size: 300% 300%;
+   animation: formaBorderFlow 6s ease infinite;
+
+   pointer-events: none;
+   z-index: -1;
+
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
+}
+
+/* Respect reduced motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+   .forma-animated-border::before {
+      animation: none;
+   }
+}
