@@ -1134,7 +1134,7 @@ export default function Home() {
                         className="
                 mb-10
                 flex
-                flex-col
+                flex-col-2
                 gap-5
                 sm:flex-row
                 sm:items-end
@@ -1324,7 +1324,7 @@ export default function Home() {
                     <div
                         className="
                 grid
-                grid-cols-1
+                grid-cols-2
                 gap-6
                 sm:grid-cols-2
                 lg:grid-cols-4
